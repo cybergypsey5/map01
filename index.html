@@ -116,7 +116,7 @@
         <script>
             var mymap;
             var lyrWS100;
-//            var lyrSABoundaries;
+            var lyrSABoundaries;
             var lyrProvBound;
             var lyrOSM;
             var lyrTopo;
@@ -164,9 +164,9 @@
                 }).addTo(mymap);
                 
                 //********** Initialize layers ************
-                lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
+                lyrOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 //                lyrTopo = L.tileLayer.provider('OpenTopoMap');
-                lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
+//                lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
 //                lyrGrayscale = L.tileLayer.grayscale('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //							attribution: '&copy; ',
 //							maxZoom: 19,
@@ -176,7 +176,7 @@
                 
                 // Add Layers
                
-//                lyrSABoundaries = L.geoJSON.ajax('data/all_districs_za.geojson', {style:styleSABound});
+                lyrSABoundaries = L.geoJSON.ajax('data/all_districs_za.geojson', {style:styleSABound});
                  lyrProvBound = L.geoJSON.ajax('data/southafrica_boundaries.geojson', {style:styleProvBound}).addTo(mymap);
                 
                 lyrWSRoute = L.geoJSON.ajax('data/ws100.geojson', {style:{color:'red'}}).addTo(mymap);
@@ -203,9 +203,9 @@
                             
                             //********** Initialize layer control ************ 
                             objBasemaps = {
-                                "OpenStreetMap": lyrOSM,
+//                                "OpenStreetMap": lyrOSM,
 //                                "Topo Map":lyrTopo,
-                                "Aerial Imagery":lyrImagery,
+//                                "Aerial Imagery":lyrImagery,
 //                                "Grayscale":lyrGrayscale
                             };
 
@@ -456,18 +456,18 @@
             });
             
             
-//            function styleSABound (feature){
-//                return {
-//                    weight: .24,
-//                color: '#FFFFFF',
-//                fillColor: '#060105',
-////                dashArray: '10,5,1,5',
-//                lineCap: 'square',
-//                lineJoin: 'bevel',
-//                opacity: 1.0,
-//                fillOpacity: 0.5
-//                };
-//            }
+            function styleSABound (feature){
+                return {
+                    weight: .24,
+                color: '#FFFFFF',
+                fillColor: '#060105',
+//                dashArray: '10,5,1,5',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                opacity: 1.0,
+                fillOpacity: 0.5
+                };
+            }
             
             function styleProvBound (feature){
                 return {
